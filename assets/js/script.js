@@ -1,5 +1,6 @@
 var begDay = 9;
 var endDay = 18;
+var textArea = $("#textArea");
 
 $("#currentDay").text(moment().format("dddd, MMMM Do"));
 
@@ -12,7 +13,7 @@ for (var i = begDay; i < endDay; i++) {
     
 
     var timeBlock = $("<div class='time-block col-md-9'>").attr("id", i);
-    var description = $("<textarea></textarea>");
+    var description = $("<textarea id='textArea'></textarea>");
 
     var saveBtn = $("<div class='saveBtn col-md-1'>");
     var saveIcon = $("<i class='fas fa-save'>");
@@ -38,8 +39,28 @@ for (var i = begDay; i < endDay; i++) {
     }
     $("#" + i).attr("id", id);
     }
+var rowHour;
+var contents = []
+$(".saveBtn").on("click", function() {
+//    console.log($(this).closest("#textArea").innerHTML());
+    var rowHour = parseInt($(this).parent().children(0).text()) - begDay;
+    console.log(rowHour);
+    contents[rowHour] = parent.find("#textArea").val();
+    localStorage.setItem("items", JSON.stringify(contents));
 
-    $(".saveBtn").on("click", function() {
-        // var rowInfo =  $(this)
-        console.log(this)
-    })
+    // for (i=0; i < textArea.length; i++) {
+    //     var info = []
+    //     info.push(textArea.val())
+    //     localStorage.setItem("items", info)
+    // }
+    });
+
+// });
+
+// function loadInfo() {
+//     $(document).ready(function() {
+//         var savedInfo = localStorage.getItem(rowHour)
+//     })
+// }
+
+// loadInfo()
