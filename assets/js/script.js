@@ -1,6 +1,6 @@
 var begDay = 9;
 var endDay = 18;
-currentTime = moment().format("hA");
+currentTime = moment().hour();
 console.log(currentTime);
 
 $("#currentDay").text(moment().format("dddd, MMMM Do"));
@@ -25,8 +25,22 @@ for (var i = begDay; i < endDay; i++) {
 };
 
 
+$(".time-block").each(function(){
+    var time = ($(this).attr('value'));
+    console.log(time);
 
+    if (currentTime > time) {
+        $(".time-block").removeAttr('id');
+        $(".time-block").attr("id", "past");
+    } else if (currentTime < time) {
+        $(".time-block").removeAttr('id');
+        $(".time-block").attr("id", "future");
+    } else if (currentTime == time) {
+        $(".time-block").removeAttr('id');
+        $(".time-block").attr("id", "present");
+    }
+});
 
-
-//Stopped here
-if currentTime < 
+// for (var i=0; i < $(".time-block").length; i++) {
+//     console.log(($(".time-block")[i]).attr('value'));
+// }
