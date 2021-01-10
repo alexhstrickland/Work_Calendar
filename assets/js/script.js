@@ -23,7 +23,6 @@ for (var i = begDay; i < endDay; i++) {
 };
 
 currentTime = moment().hour();
-console.log(currentTime);
 
 for (var i = begDay; i < endDay; i++) {
     var id;
@@ -39,3 +38,8 @@ for (var i = begDay; i < endDay; i++) {
     }
     $("#" + i).attr("id", id);
     }
+
+    $(".saveBtn").on("click", function() {
+        // var rowInfo =  $(this)
+        console.log(this)
+    })
