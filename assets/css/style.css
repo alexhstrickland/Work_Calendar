@@ -26,7 +26,6 @@ textarea{
 
 .time-block{
   text-align: center;
-  /* border-radius: 15px; */
 }
 
 .row {
@@ -64,6 +63,7 @@ textarea{
   background-color: #06AED5;
   color: white;
   text-align: center;
+ 
   
 }
 
@@ -82,7 +82,8 @@ textarea {
 }
 
 i {
-  margin-top: 50%;
+  margin-top: 60%;
+ 
 }
 
 
