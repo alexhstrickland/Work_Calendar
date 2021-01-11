@@ -1,10 +1,10 @@
 var begDay = 9;
 var endDay = 18;
 
-loadInfo();
-
+// update current day at the top of the page
 $("#currentDay").text(moment().format("dddd, MMMM Do"));
 
+// for loop to dynamically add timeblocks
 for (var i = begDay; i < endDay; i++) {
     
     var rowDiv = $("<div class='row'>");
@@ -17,11 +17,12 @@ for (var i = begDay; i < endDay; i++) {
     var saveIcon = $("<i class='fas fa-save'>");
     
     $(".container").append(rowDiv.append(hourDiv, timeBlock, saveBtn.append(saveIcon)));
-
 };
 
-currentTime = moment().hour();
+// variable to get current time
+var currentTime = moment().hour();
 
+// for loop to set properties of time blocks
 for (var i = begDay; i < endDay; i++) {
     var id;
     if (currentTime < i) {
@@ -38,18 +39,10 @@ for (var i = begDay; i < endDay; i++) {
     }
 
 var storageEl = [];
-// // $(".saveBtn").on("click", function(event) {
-// //     event.preventDefault();
-// //     var rowHour = parseInt($(this).parent().children(0).text()) - begDay;
-// //     console.log(rowHour);
-// //     contents[rowHour] = $(this).parent().find("#textArea").val();
-// //     localStorage.setItem('userinputs', JSON.stringify(contents));
-// //     console.log(contents);
-
-// // // });
 var timeEl;
 var textEl;
 var content;
+// event listener to get text from text areas
 $(".saveBtn").on("click", function(event) {
     event.preventDefault();
     timeEl = parseInt($(this).parent().children(0).text());
@@ -65,9 +58,9 @@ $(".saveBtn").on("click", function(event) {
         storageEl.push(content);
         localStorage.setItem("contents", JSON.stringify(storageEl));
     }
-    // $(this).parent().find("textarea").replaceWith($("<textarea>" + textEl+ "</textarea>"));
     });
 
+// function to load saved information
 var showItems;
 function loadInfo() {
     var savedInfo = JSON.parse(localStorage.getItem("contents"));
@@ -86,4 +79,5 @@ function loadInfo() {
 
 }
 
-// loadInfo();
+// function call 
+loadInfo();
